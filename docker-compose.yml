@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  ai-job-matching:
+    build: .
+    container_name: ai-job-matching
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - EMBEDDING_MODEL_NAME=all-MiniLM-L6-v2
+      - EMBEDDING_DEVICE=cpu
+      - LOG_LEVEL=INFO
+      # Uncomment and set your OpenAI key to enable LLM reranking:
+      # - OPENAI_API_KEY=sk-...
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+          cpus: "2"
