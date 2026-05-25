@@ -87,3 +87,4 @@ def test_openai_parser_model_name() -> None:
     """The model_name property returns the configured model."""
     parser = OpenAIParser(api_key="")
     assert parser.model_name == "gpt-4o-mini"
+#end of file
